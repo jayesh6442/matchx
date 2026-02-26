@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: auth-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/matchx
+    username: matchx
+    password: matchxpass
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+    open-in-view: false
+
+security:
+  jwt:
+    secret: logsphere-secret-key-for-jwt-signing-2026-very-strong
+    expiration-ms: 3600000
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO

@@ -2,9 +2,9 @@ spring:
   application:
     name: auth-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/logsphere
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://localhost:5432/matchxdb
+    username: matchx
+    password: matchxpass
   jpa:
     hibernate:
       ddl-auto: update

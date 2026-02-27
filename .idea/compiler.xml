@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="demo" />
         <module name="demo (1)" />
+        <module name="auth-service" />
       </profile>
     </annotationProcessing>
   </component>

@@ -1,0 +1,30 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: trade-persistence-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/matchxdb
+    username: matchx
+    password: matchxpass
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          time_zone: UTC
+    open-in-view: false
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: trade-persistence-group
+      auto-offset-reset: earliest
+
+logging:
+  level:
+    root: INFO
+    com.jayesh.trade: DEBUG

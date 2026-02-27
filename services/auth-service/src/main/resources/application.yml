@@ -2,7 +2,7 @@ spring:
   application:
     name: auth-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/matchx
+    url: jdbc:postgresql://localhost:5432/matchxdb
     username: matchx
     password: matchxpass
   jpa:

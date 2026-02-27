@@ -30,9 +30,12 @@ services:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
 
   # -----------------------------
-  # POSTGRES (shared for now)
+  # MATCHX DB (for auth-service)
   # -----------------------------
   postgres:
     image: postgres:16
@@ -46,5 +49,21 @@ services:
     volumes:
       - matchx_postgres_data:/var/lib/postgresql/data
 
+  # -----------------------------
+  # TRADE DB (for trade-persistence-service)
+  # -----------------------------
+  trade-db:
+    image: postgres:16
+    container_name: matchx-trade-db
+    environment:
+      POSTGRES_DB: tradedb
+      POSTGRES_USER: tradeuser
+      POSTGRES_PASSWORD: tradepass
+    ports:
+      - "5433:5433"
+    volumes:
+      - matchx_trade_data:/var/lib/postgresql/data
+
 volumes:
   matchx_postgres_data:
+  matchx_trade_data:

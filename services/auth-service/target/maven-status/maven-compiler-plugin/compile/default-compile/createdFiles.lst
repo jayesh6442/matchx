@@ -8,9 +8,9 @@ com/jayesh/authservice/exception/ErrorResponse.class
 com/jayesh/authservice/controller/AuthController.class
 com/jayesh/authservice/model/UserEntity.class
 com/jayesh/authservice/dto/RegisterRequest.class
-com/jayesh/authservice/constant/SecurityConstants.class
-com/jayesh/authservice/security/CustomUserDetailsService.class
 com/jayesh/authservice/dto/LoginRequest.class
+com/jayesh/authservice/security/CustomUserDetailsService.class
+com/jayesh/authservice/constant/SecurityConstants.class
 com/jayesh/authservice/exception/GlobalExceptionHandler.class
 com/jayesh/authservice/config/SecurityConfig.class
 com/jayesh/authservice/dto/AuthResponse.class

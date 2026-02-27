@@ -1,8 +1,11 @@
 package com.jayesh.matchx.service;
 
+import com.jayesh.matchx.engine.MatchingEngine;
+import com.jayesh.matchx.engine.OrderBook;
 import com.jayesh.matchx.model.Trade;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
@@ -16,9 +19,12 @@ public class TradePublisherService {
     private static final String TOPIC = "trade-events";
 
     private final KafkaTemplate<String, Trade> kafkaTemplate;
+    private final MatchingEngine matchingEngine;
 
-    public TradePublisherService(KafkaTemplate<String, Trade> kafkaTemplate) {
+    public TradePublisherService(KafkaTemplate<String, Trade> kafkaTemplate, 
+                                @Lazy MatchingEngine matchingEngine) {
         this.kafkaTemplate = kafkaTemplate;
+        this.matchingEngine = matchingEngine;
     }
 
     public void publishTrade(Trade trade) {
@@ -40,5 +46,9 @@ public class TradePublisherService {
 
     public void publishTrades(List<Trade> trades) {
         trades.forEach(this::publishTrade);
+    }
+
+    public OrderBook.OrderBookSnapshot getOrderBookSnapshot(String symbol) {
+        return matchingEngine.getOrderBookSnapshot(symbol);
     }
 }

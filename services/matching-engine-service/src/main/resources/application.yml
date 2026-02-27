@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: matching-engine-service
+  main:
+    allow-circular-references: true
   kafka:
     bootstrap-servers: localhost:9092
     producer:
